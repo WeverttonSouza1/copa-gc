@@ -38,4 +38,38 @@ public class Copa {
 
         return grupoSelecoes;
     }
+    public List<Selecao> calcularClassificacao(char grupo) {
+    List<Selecao> classificacao = listarGrupo(grupo);
+
+    classificacao.sort((s1, s2) ->
+        Integer.compare(calcularPontos(s2), calcularPontos(s1))
+    );
+
+    return classificacao;
+}
+
+private int calcularPontos(Selecao selecao) {
+    int pontos = 0;
+
+    for (Partida p : partidas) {
+
+        if (p.getMandante().equals(selecao)) {
+            if (p.getGolsA() > p.getGolsB()) {
+                pontos += 3;
+            } else if (p.getGolsA() == p.getGolsB()) {
+                pontos += 1;
+            }
+        }
+
+        if (p.getVisitante().equals(selecao)) {
+            if (p.getGolsB() > p.getGolsA()) {
+                pontos += 3;
+            } else if (p.getGolsA() == p.getGolsB()) {
+                pontos += 1;
+            }
+        }
+    }
+
+    return pontos;
+}
 }
