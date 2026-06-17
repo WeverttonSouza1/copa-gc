@@ -37,5 +37,10 @@ public class CargaInicial {
         copa.registrarPartida(p2);
         copa.registrarPartida(p3);
         copa.registrarPartida(p4);
+
+        // adicionando artilheiros para exemplo
+        copa.topArtilheiros().add("Endrick - 2 gols");
+        copa.topArtilheiros().add("Harry Styles - 2 gols");
+        copa.topArtilheiros().add("Kylian Mbappe - 1 gol");
     }
 }
