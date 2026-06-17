@@ -142,7 +142,10 @@ Ela será responsável por:
 
 ---
 
-## Como Executar - instrucoes da Integrante D
+## Como Executar - INSTRUÇÕES DA D
+1. Primeiro compile tudo: javac -d out src/**/*.java
+2. Depois execute: java -cp out Main
+3. O menu vai aparecer no terminal!
 
 ### 1. Clonar o repositório
 
