@@ -1,4 +1,4 @@
-package model.service;
+package service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,14 @@ public class Copa {
 
     public void registrarPartida(Partida partida) {
         partidas.add(partida);
+    }
+
+    public void adicionarArtilheiro(String nome) {
+        artilheiros.add(nome);
+    }
+
+    public List<String> getArtilheiros() {
+        return artilheiros;
     }
 
     public List<Selecao> listarGrupo(char grupo) {
