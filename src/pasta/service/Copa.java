@@ -1,10 +1,10 @@
-package model.service;
+package pasta.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Partida;
-import model.Selecao;
+import pasta.model.Partida;
+import pasta.model.Selecao;
 
 public class Copa {
 

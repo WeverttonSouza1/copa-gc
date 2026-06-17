@@ -1,4 +1,4 @@
-﻿package model;
+package pasta.model;
 
 public class Partida {
     private Selecao mandante;
