@@ -6,7 +6,6 @@ import java.util.List;
 import model.Partida;
 import model.Selecao;
 
-
 public class Copa {
 
     private List<Selecao> selecoes;
@@ -27,6 +26,14 @@ public class Copa {
         partidas.add(partida);
     }
 
+    public void adicionarArtilheiro(String nome) {
+        artilheiros.add(nome);
+    }
+
+    public List<String> getArtilheiros() {
+        return artilheiros;
+    }
+
     public List<Selecao> listarGrupo(char grupo) {
         List<Selecao> grupoSelecoes = new ArrayList<>();
 
@@ -38,38 +45,50 @@ public class Copa {
 
         return grupoSelecoes;
     }
-    public List<Selecao> calcularClassificacao(char grupo) {
-    List<Selecao> classificacao = listarGrupo(grupo);
+ public Selecao buscarSelecao(String valor) {
+    valor = valor.trim();
 
-    classificacao.sort((s1, s2) ->
-        Integer.compare(calcularPontos(s2), calcularPontos(s1))
-    );
-
-    return classificacao;
-}
-
-private int calcularPontos(Selecao selecao) {
-    int pontos = 0;
-
-    for (Partida p : partidas) {
-
-        if (p.getMandante().equals(selecao)) {
-            if (p.getGolsA() > p.getGolsB()) {
-                pontos += 3;
-            } else if (p.getGolsA() == p.getGolsB()) {
-                pontos += 1;
-            }
-        }
-
-        if (p.getVisitante().equals(selecao)) {
-            if (p.getGolsB() > p.getGolsA()) {
-                pontos += 3;
-            } else if (p.getGolsA() == p.getGolsB()) {
-                pontos += 1;
-            }
+    for (Selecao s : selecoes) {
+        if (s.getNome().equalsIgnoreCase(valor)
+                || s.getCodigoFIFA().equalsIgnoreCase(valor)) {
+            return s;
         }
     }
-
-    return pontos;
+    return null;
 }
+
+    public List<Selecao> calcularClassificacao(char grupo) {
+        List<Selecao> classificacao = listarGrupo(grupo);
+
+        classificacao.sort((s1, s2) ->
+            Integer.compare(calcularPontos(s2), calcularPontos(s1))
+        );
+
+        return classificacao;
+    }
+
+    private int calcularPontos(Selecao selecao) {
+        int pontos = 0;
+
+        for (Partida p : partidas) {
+
+            if (p.getMandante().equals(selecao)) {
+                if (p.getGolsA() > p.getGolsB()) {
+                    pontos += 3;
+                } else if (p.getGolsA() == p.getGolsB()) {
+                    pontos += 1;
+                }
+            }
+
+            if (p.getVisitante().equals(selecao)) {
+                if (p.getGolsB() > p.getGolsA()) {
+                    pontos += 3;
+                } else if (p.getGolsA() == p.getGolsB()) {
+                    pontos += 1;
+                }
+            }
+        }
+
+        return pontos;
+    }
 }
