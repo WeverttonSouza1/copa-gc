@@ -56,7 +56,79 @@ public class Main {
                     }
                     break;
                     
-               
+                case 2:
+                    System.out.println("\n--- Registro de Partida ---");
+                    
+                    // Primeiro, mostra as seleções disponíveis
+                    System.out.println("\nSelecoes disponiveis:");
+                    List<Selecao> todasSelecoes = copa.listarGrupo('A');
+                    todasSelecoes.addAll(copa.listarGrupo('B'));
+                    for (Selecao s : todasSelecoes) {
+                        System.out.println("  - " + s.getNome());
+                    }
+                    
+                    System.out.print("\nSelecao mandante: ");
+                    String nomeMandante = sc.nextLine();
+                    
+                    System.out.print("Selecao visitante: ");
+                    String nomeVisitante = sc.nextLine();
+                    
+                    System.out.print("Gols do mandante: ");
+                    int golsA = sc.nextInt();
+                    
+                    System.out.print("Gols do visitante: ");
+                    int golsB = sc.nextInt();
+                    sc.nextLine();
+                    
+                    // Busca as seleções pelo nome (manual)
+                    Selecao mandante = null;
+                    Selecao visitante = null;
+                    
+                    for (Selecao s : todasSelecoes) {
+                        if (s.getNome().equalsIgnoreCase(nomeMandante)) {
+                            mandante = s;
+                        }
+                        if (s.getNome().equalsIgnoreCase(nomeVisitante)) {
+                            visitante = s;
+                        }
+                    }
+                    
+                    if (mandante != null && visitante != null) {
+                        Partida partida = new Partida(mandante, visitante, golsA, golsB);
+                        copa.registrarPartida(partida);
+                        System.out.println("\nPartida registrada com sucesso!");
+                        System.out.println("  " + partida);
+                    } else {
+                        if (mandante == null) {
+                            System.out.println("Selecao nao encontrada: " + nomeMandante);
+                        }
+                        if (visitante == null) {
+                            System.out.println("Selecao nao encontrada: " + nomeVisitante);
+                        }
+                    }
+                    break;
+                    
+                case 3:
+                    System.out.print("Digite o grupo (A ou B): ");
+                    String grupoClassInput = sc.nextLine().toUpperCase();
+                    while (!grupoClassInput.equals("A") && !grupoClassInput.equals("B")) {
+                        System.out.print("Grupo invalido! Digite A ou B: ");
+                        grupoClassInput = sc.nextLine().toUpperCase();
+                    }
+                    char grupoClass = grupoClassInput.charAt(0);
+                    
+                    List<Selecao> classificacao = copa.calcularClassificacao(grupoClass);
+                    System.out.println("\n=== Classificacao do Grupo " + grupoClass + " ===");
+                    if (classificacao.isEmpty()) {
+                        System.out.println("  Nenhuma selecao neste grupo.");
+                    } else {
+                        int posicao = 1;
+                        for (Selecao s : classificacao) {
+                            System.out.println("  " + posicao + ". " + s);
+                            posicao++;
+                        }
+                    }
+                    break;
                     
                 case 4:
                     System.out.println("\n=== Artilheiros do Copa GC ===");
