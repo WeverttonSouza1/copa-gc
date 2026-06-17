@@ -222,8 +222,11 @@ fix(readme): resolve conflito em Como Executar
 
 | Integrante | Responsabilidades |
 |---|---|
-| Wevertton Souza | `feature/modelos` e `feature/carga` |
-| Felipe Lima | `feature/copa` e `feature/main` |
+| Wevertton Souza | `feature/modelos` |
+| Felipe Lima | `feature/copa` |
+| Eduarda Cecília |`feature/main` |
+| Ana Clara | `feature/carga` |
+
 
 ---
 

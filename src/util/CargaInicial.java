@@ -6,7 +6,7 @@ import model.Partida;
 
 public class CargaInicial {
 
-    public void popularCopa(Copa copa) {
+    public Copa popularCopa(Copa copa) {
         // As seleções
         Selecao s1 = new Selecao("Brasil", 'A', "BRA");
         Selecao s2 = new Selecao("Franca", 'A', "FRA");
@@ -39,8 +39,10 @@ public class CargaInicial {
         copa.registrarPartida(p4);
 
         // adicionando artilheiros para exemplo
-        copa.topArtilheiros().add("Endrick - 2 gols");
-        copa.topArtilheiros().add("Harry Styles - 2 gols");
-        copa.topArtilheiros().add("Kylian Mbappe - 1 gol");
+        copa.adicionarArtilheiro("Endrick - 2 gols");
+        copa.adicionarArtilheiro("Harry Styles - 2 gols");
+        copa.adicionarArtilheiro("Kylian Mbappe - 1 gol");
+
+        return copa;
     }
 }
