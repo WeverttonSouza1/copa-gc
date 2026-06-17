@@ -142,7 +142,7 @@ Ela será responsável por:
 
 ---
 
-## Como Executar
+## Como Executar - instrucoes da Integrante D
 
 ### 1. Clonar o repositório
 
@@ -156,13 +156,14 @@ git clone https://github.com/WeverttonSouza1/copa-gc.git
 cd copa-gc
 ```
 
-### 3. Compilar o projeto
+### 3. Compile todas as classes: 
 
 ```bash
-javac -d out src/model/*.java src/service/*.java src/util/*.java src/Main.java
+javac -d out src/**/*.java
+
 ```
 
-### 4. Executar o sistema
+### 4. Depois execute: 
 
 ```bash
 java -cp out Main
